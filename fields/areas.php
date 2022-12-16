@@ -22,6 +22,9 @@
  * You should have received a copy of the GNU General Public License
  * along with ShackSearch.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+use Joomla\CMS\Factory;
+
 defined('JPATH_PLATFORM') or die;
 
 jimport('joomla.form.helper');
@@ -49,9 +52,9 @@ class ShacksearchFormFieldAreas extends JFormFieldList
         $areas = array();
 
         JPluginHelper::importPlugin('search');
-        $dispatcher  = JEventDispatcher::getInstance();
-        $searchareas = $dispatcher->trigger('onContentSearchAreas');
 
+		// Changed Brainforge.UK
+	    $searchareas = Factory::getApplication()->triggerEvent('onContentSearchAreas');
         foreach ($searchareas as $area) {
             if (is_array($area)) {
                 $areas = array_merge($areas, $area);

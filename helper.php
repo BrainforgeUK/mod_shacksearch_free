@@ -27,6 +27,9 @@ use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die;
 
+// Added Brainforge.UK
+include_once __DIR__ . '/dispatcher.php';
+
 class modShackSearchHelper
 {
     /**
@@ -42,7 +45,8 @@ class modShackSearchHelper
             'searchText'     => JText::_('MOD_SHACKSEARCH_SEARCH_LABEL'),
             'nextLinkText'   => JText::_('MOD_SHACKSEARCH_NEXT_LABEL'),
             'prevLinkText'   => JText::_('MOD_SHACKSEARCH_PREV_LABEL'),
-            'viewAllText'    => JText::_('MOD_SHACKSEARCH_VIEW_ALL_LABEL'),
+			// Changed Brainforge.UK
+            //'viewAllText'    => JText::_('MOD_SHACKSEARCH_VIEW_ALL_LABEL'),
             'resultText'     => JText::_('MOD_SHACKSEARCH_RESULTS_LABEL'),
             'readMoreText'   => JText::_('MOD_SHACKSEARCH_READ_MORE_LABEL'),
             'baseUrl'        => JURI::root(),
@@ -82,8 +86,9 @@ class modShackSearchHelper
         if ($word != '') {
             $model = new SearchModelSearch();
 
+			// Changed Brainforge.UK
             // log the search
-            JSearchHelper::logSearch($word, 'com_search');
+            //JSearchHelper::logSearch($word, 'com_search');
 
             $lang        = JFactory::getLanguage();
             $upper_limit = $lang->getUpperLimitSearchWord();
@@ -103,7 +108,8 @@ class modShackSearchHelper
                 $results = $model->getData();
                 $total   = $model->getTotal();
 
-                require_once JPATH_SITE . '/components/com_content/helpers/route.php';
+				// Changed Brainforge.UK
+                //require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 
                 for ($i = 0, $count = count($results); $i < $count; $i++) {
                     $result = &$results[$i];
