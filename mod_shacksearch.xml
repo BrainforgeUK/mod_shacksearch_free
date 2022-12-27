@@ -23,7 +23,7 @@
     <files>
         <filename module="mod_shacksearch">mod_shacksearch.php</filename>
         <filename>helper.php</filename>
-
+        <filename>dispatcher.php</filename>
         <folder>fields</folder>
         <folder>form</folder>
         <folder>language</folder>
